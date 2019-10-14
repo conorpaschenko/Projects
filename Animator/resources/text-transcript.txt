@@ -1,0 +1,38 @@
+Type: rectangle
+Corner: (190.00, 180.00) Width: 20.00, Height: 30.00, Color: [r=0.00,g=0.20,b=0.35]
+Appears at t = 0.0s Disappears at t = 15.0s
+
+Name: disk2
+Type: rectangle
+Corner: (167.50, 210.00) Width: 65.00, Height: 30.00, Color: [r=0.03,g=0.97,b=0.16]
+Appears at t = 0.0s Disappears at t = 15.0s
+
+Name: disk3
+Type: rectangle
+Corner: (145.00, 240.00) Width: 110.00, Height: 30.00, Color: [r=0.04,g=0.18,b=0.69]
+Appears at t = 0.0s Disappears at t = 15.0s
+
+Shape disk1 moves from (190.00, 180.00) to (190.00, 50.00) from t = 1.0s to t = 1.0s
+Shape disk1 moves from (190.00, 50.00) to (490.00, 50.00) from t = 1.0s to t = 2.0s
+Shape disk1 moves from (490.00, 50.00) to (490.00, 240.00) from t = 2.0s to t = 2.0s
+Shape disk1 moves from (490.00, 240.00) to (490.00, 50.00) from t = 4.0s to t = 4.0s
+Shape disk1 moves from (490.00, 50.00) to (340.00, 50.00) from t = 5.0s to t = 5.0s
+Shape disk1 moves from (340.00, 50.00) to (340.00, 210.00) from t = 5.0s to t = 6.0s
+Shape disk1 moves from (340.00, 210.00) to (340.00, 50.00) from t = 7.0s to t = 8.0s
+Shape disk1 moves from (340.00, 50.00) to (190.00, 50.00) from t = 8.0s to t = 8.0s
+Shape disk1 moves from (190.00, 50.00) to (190.00, 240.00) from t = 8.0s to t = 9.0s
+Shape disk1 moves from (190.00, 240.00) to (190.00, 50.00) from t = 10.0s to t = 11.0s
+Shape disk1 moves from (190.00, 50.00) to (490.00, 50.00) from t = 11.0s to t = 11.0s
+Shape disk1 moves from (490.00, 50.00) to (490.00, 180.00) from t = 11.0s to t = 12.0s
+Shape disk1 changes color from [r=0.00,g=0.20,b=0.35] to [r=0.00,g=1.00,b=0.00] from t = 12.0s to t = 12.0s
+Shape disk2 moves from (167.50, 210.00) to (167.50, 50.00) from t = 2.0s to t = 3.0s
+Shape disk2 moves from (167.50, 50.00) to (317.50, 50.00) from t = 3.0s to t = 3.0s
+Shape disk2 moves from (317.50, 50.00) to (317.50, 240.00) from t = 3.0s to t = 4.0s
+Shape disk2 moves from (317.50, 240.00) to (317.50, 50.00) from t = 9.0s to t = 9.0s
+Shape disk2 moves from (317.50, 50.00) to (467.50, 50.00) from t = 9.0s to t = 10.0s
+Shape disk2 moves from (467.50, 50.00) to (467.50, 210.00) from t = 10.0s to t = 10.0s
+Shape disk2 changes color from [r=0.03,g=0.97,b=0.16] to [r=0.00,g=1.00,b=0.00] from t = 10.0s to t = 11.0s
+Shape disk3 moves from (145.00, 240.00) to (145.00, 50.00) from t = 6.0s to t = 6.0s
+Shape disk3 moves from (145.00, 50.00) to (445.00, 50.00) from t = 6.0s to t = 7.0s
+Shape disk3 moves from (445.00, 50.00) to (445.00, 240.00) from t = 7.0s to t = 7.0s
+Shape disk3 changes color from [r=0.04,g=0.18,b=0.69] to [r=0.00,g=1.00,b=0.00] from t = 7.0s to t = 8.0s

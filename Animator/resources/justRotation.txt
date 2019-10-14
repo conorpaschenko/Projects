@@ -1,0 +1,2 @@
+rectangle name R min-x 200 min-y 200 width 50 height 100 color 1 0 0 from 1 to 100
+rotate name R from 10 to 80 degree 90

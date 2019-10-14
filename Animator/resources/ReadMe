@@ -1,0 +1,120 @@
+MODEL CHANGES
+- New print description method that returns all times in relation to the
+    framesPerSecond value given. Allows for dispatch to model from text view
+- Scale method has been changed such that it can scale x dimension and y dimension differently
+    this was necessary for the model, but not implemented at first.
+- Everything that was double has bee changed to float to match up with the builder implementation
+- Circle class has been deleted, Oval class has been created to allow for two radius dimensions.
+- Changed the rgb max values in the MyColor class to 1, instead of 255, also changed the rgb values
+    to floats.
+- The list of AnimationOperations within model is now sorted upon model initialization
+- Moved the location field to the AbstractShape class from the EasyAnimatorShape class
+- The initSpaceTime was changed such that it would initialize all remaining instances of time
+    with the shape instance after a command was complete, it was buggy before and not working
+   properly
+- Get width and getHeight were added for rectangle, same for Oval
+- formatAsSVG methods added to command, EasyAnimatorShape, and Shape as a means to dispatch to the
+   the model to get the information necessary
+
+VIEW DESIGN
+
+Visual View
+    -We use a different controller that sends individual frame states at time intervals according to
+    the given frames per second. The controller sends the shapes of that frame state, and the visual
+    view draws in the ViewPanel class
+
+Abstract Text View
+    - We use a controller that does not involve time intervals to send frame states as a means of
+    making the view work more efficiently. We keep track of every new shape the view receives upon
+    each new received frame state. After we receive all initial shape states,
+    we then append the corresponding output which is left to the extending classes to decide how
+    to implement.
+
+SVG View
+    - Extends the abstract text view. Once all info is received, appends svg code
+     by dispatching the svg formatting to the shape classes.
+
+Text View
+   - Extends the abstract text view. Once all info is received, appends the description
+     by dispatching the textual description to shape classes.
+
+
+CONTROLLER DESIGN
+Visual Controller
+    - Uses a timer to send sends individual frame states from the model to the view
+    at time intervals according to the given frames per second.
+
+Text Controller
+    - Sends individual frame states from the model to the view without a timer. This is much more
+    efficient for textual views with a smaller frames per second value.
+
+
+MAIN
+- Parses through the command line string arguments using a scanner.
+
+
+ASSIGNMENT 7
+Changes
+-Added a loop boolean argument to the formatSVG method in the EasyAnimatorShape class to
+    make it possible to dispatch this exporting the animation with looping functionality to the
+    EasyAnimatorShapes's
+Controller
+-EasyAnimatorInteractiveController made to function with an EasyAnimatorInteractiveView
+    - Initializes all action listeners that will receive ActionEvents from the view
+    - When run is called, uses a timer that to draw shapes according to the ActionEvents
+-The interactive controller uses a ButtonListener class with a hashmap field of String to Runnable
+    - This hashmap represents connection Command Action String to Action.
+    - Each button is given a specific action command.
+    -The actionPerformed method then searches for the Action command in the hashmap and executes
+    it's runnable
+Interactive View
+User Interface
+-Play/Pause button is a toggle button that is highlighted (selected) when pause is false
+-Speed: Uses a text field for user to enter in speed, if user enters in a letter, text field turns
+    red. If user enters in a negative integer, speed is set to 1. If user enters in an
+    integer > 1000, speed is set to 1000. User must press enter speed to send the action to the
+    controller. Here the controller sets the delay of the timer to (1000/ SPEED_ENTERED)
+-Export Button: User enters in an svg file name in the Export File JTextField. If it the input does
+    not contain the ".svg" extension or if the user just exported a file with the same name,
+    the text field turns red, otherwise turns green. User must
+    press Export button to export the svg file. This inverts the controllers export boolean field
+    which in the timer if true tells the view to exportToSVG.
+-Rewind button is a toggle button, sends the action to the controller that makes the curframe
+    decrement instead of increment
+-The loop button invokes the action of the controller to set the loop boolean field to invert
+    -Inside the controller, if loop is true, the curFrame will be set to 0 if it is at the last
+    frame or the last frame if it is 0 and the animation is rewinding.
+Testing
+Created an EmptyShell view with dummy methods. The class implements EasyAnimatorInteractiveView,
+but the methods do not actually accomplish the purpose of the javadoc. Instead, they
+are used to test the connections between the controller and view. It does this by having an
+appendable field, and every method inside the shell view appends a string to the appendable,
+declaring that the method was called.
+
+
+Extra Credit
+
+SCRUBBING
+-configureScrubChangeListener added to Controller. addScrubListener and setScrubber
+ added to interactive view interface.
+-In the ChangeListener, when the value is adjusting, we change the current frame displayed in the
+ visual to the value of the slider, this is how we avoid the difference between timing ticks and
+ scrubbing ticks
+- Inside the timer, whenever a timer tick advances the frame, we set the value of the slider
+ to the frame value.
+
+ROTATION
+-Added a rotation class
+-Added a rotationDegree field to our EasyAnimatorShape class
+-Added a new case in the readFile method in the AnimatorFileReader class
+-Added a new builder method to the builder interface and the builder implementation
+-In the ViewPanel class, where our shapes are drawn, we made it so that all shapes drawn will
+ also be drawn rotated at their rotation degree, which is set to 0 by default.
+
+
+LAYERS
+-Added a new case in the readFile method in the AnimatorFileReader class when creating shapes
+-Changed the builder method to the builder interface and the builder implementation to use the
+changed constructor that takes in the layer value
+-Before painting a frame (List of shapes in a frame) we sort the list of shapes from greatest layer
+ to least layer. This then prints them in the desired order.
